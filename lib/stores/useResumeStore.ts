@@ -2,17 +2,19 @@ import { create } from "zustand";
 
 type PersonalInfo = {
   name: string;
-  email: string;
+  email:  string;
   phone: string;
   linkedIn: string;
-  github?: string;
+  github?:  string;
   location?: string;
+  profileImage?: string;
 };
 
 type ProfessionalInfo = {
-  skills: string;
+  skills:  string;
   experienceYears: string;
-  summary: string;
+  summary:  string;
+  domain: string;
 };
 
 type ProjectsInfo = {
@@ -25,11 +27,10 @@ type ExperienceInfo = {
   exp2: string;
 };
 
-type AIResume = {
+type AIPortfolio = {
   summary?: string;
   skills?: string[];
-  experience?: ExperienceItem[];
-  education?: string[];
+  experience?:  ExperienceItem[];
   projects?: ProjectItem[];
 };
 
@@ -37,43 +38,37 @@ type ExperienceItem = {
   company: string;
   role: string;
   duration: string;
-  points: string[];
+  points:  string[];
 };
 
 type ProjectItem = {
   name: string;
-  tech: string[];
+  tech:  string[];
   description: string;
 };
 
-type ResumeState = {
+type PortfolioState = {
   personalInfo: PersonalInfo;
   professional: ProfessionalInfo;
   projects: ProjectsInfo;
   experience: ExperienceInfo;
   jobDescription: string;
 
-  aiResume?: AIResume;
-  ats?: {
-    score: number;
-    missingKeywords?: string[];
-    suggestions?: string[];
-  };
+  aiPortfolio?: AIPortfolio;
 
   // setters
-  setPersonalInfo: (partial: Partial<PersonalInfo>) => void;
-  setProfessional: (partial: Partial<ProfessionalInfo>) => void;
-  setProjects: (partial: Partial<ProjectsInfo>) => void;
-  setExperience: (partial: Partial<ExperienceInfo>) => void;
-  setJobDescription: (job: string) => void;
+  setPersonalInfo: (partial:  Partial<PersonalInfo>) => void;
+  setProfessional: (partial:  Partial<ProfessionalInfo>) => void;
+  setProjects: (partial:  Partial<ProjectsInfo>) => void;
+  setExperience: (partial:  Partial<ExperienceInfo>) => void;
+  setJobDescription: (job:  string) => void;
 
-  setAIResume: (aiResume: AIResume) => void;
-  setATS: (ats: ResumeState["ats"]) => void;
+  setAIPortfolio: (aiPortfolio: AIPortfolio) => void;
 
   reset: () => void;
 };
 
-export const useResumeStore = create<ResumeState>((set) => ({
+export const useResumeStore = create<PortfolioState>((set) => ({
   personalInfo: {
     name: "",
     email: "",
@@ -81,12 +76,14 @@ export const useResumeStore = create<ResumeState>((set) => ({
     linkedIn: "",
     github: "",
     location: "",
+    profileImage: "",
   },
 
   professional: {
     skills: "",
-    experienceYears: "",
-    summary: "",
+    experienceYears:  "",
+    summary:  "",
+    domain:  "",
   },
 
   projects: {
@@ -101,50 +98,48 @@ export const useResumeStore = create<ResumeState>((set) => ({
 
   jobDescription: "",
 
-  aiResume: undefined,
-  ats: undefined,
+  aiPortfolio: undefined,
 
   // setters
   setPersonalInfo: (partial) =>
     set((state) => ({
-      personalInfo: { ...state.personalInfo, ...partial },
+      personalInfo: { ... state.personalInfo, ...partial },
     })),
 
   setProfessional: (partial) =>
     set((state) => ({
-      professional: { ...state.professional, ...partial },
+      professional:  { ...state.professional, ...partial },
     })),
 
   setProjects: (partial) =>
     set((state) => ({
-      projects: { ...state.projects, ...partial },
+      projects:  { ...state.projects, ...partial },
     })),
 
-  setExperience: (partial) =>
+  setExperience:  (partial) =>
     set((state) => ({
-      experience: { ...state.experience, ...partial },
+      experience: { ... state.experience, ... partial },
     })),
 
   setJobDescription: (job) => set({ jobDescription: job }),
 
-  setAIResume: (data) => set({ aiResume: data }),
-  setATS: (data) => set({ ats: data }),
+  setAIPortfolio: (data) => set({ aiPortfolio: data }),
 
   reset: () =>
     set({
-      personalInfo: {
-        name: "",
-        phone: "",
+      personalInfo:  {
+        name:  "",
+        phone:  "",
         linkedIn: "",
         email: "",
         github: "",
         location: "",
+        profileImage: "",
       },
-      professional: { skills: "", experienceYears: "", summary: "" },
+      professional:  { skills: "", experienceYears: "", summary: "", domain:  "" },
       projects: { project1: "", project2: "" },
-      experience: { exp1: "", exp2: "" },
-      jobDescription: "",
-      aiResume: undefined,
-      ats: undefined,
+      experience:  { exp1: "", exp2: "" },
+      jobDescription:  "",
+      aiPortfolio: undefined,
     }),
 }));
