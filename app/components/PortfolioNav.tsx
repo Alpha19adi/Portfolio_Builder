@@ -2,7 +2,9 @@
 
 import { forwardRef } from "react";
 import { useEditMode } from "./EditModeContext";
-import { Pencil, Eye, Save } from "lucide-react";
+import { Pencil, Eye } from "lucide-react";
+import { PublishButton } from "./PublishButton";
+import { useResumeStore } from "@/lib/stores/useResumeStore";
 
 interface PortfolioNavProps {
   name?:  string;
@@ -11,6 +13,11 @@ interface PortfolioNavProps {
 export const PortfolioNav = forwardRef<HTMLElement, PortfolioNavProps>(
   ({ name }, ref) => {
     const { isEditMode, toggleEditMode } = useEditMode();
+    
+    // Get data from store for publishing
+    const personal = useResumeStore((s) => s.personalInfo);
+    const professional = useResumeStore((s) => s.professional);
+    const ai = useResumeStore((s) => s.aiPortfolio);
 
     return (
       <nav
@@ -23,7 +30,7 @@ export const PortfolioNav = forwardRef<HTMLElement, PortfolioNavProps>(
               {name?. charAt(0) || "P"}
             </div>
             <span className="font-semibold text-gray-200">
-              {name?. split(" ")[0] || "Portfolio"}
+              {name?.split(" ")[0] || "Portfolio"}
             </span>
           </div>
 
@@ -62,7 +69,7 @@ export const PortfolioNav = forwardRef<HTMLElement, PortfolioNavProps>(
                   : "bg-linear-to-r from-purple-600 to-cyan-600 hover:opacity-90 text-white"
               }`}
             >
-              {isEditMode ? (
+              {isEditMode ?  (
                 <>
                   <Eye className="w-4 h-4" />
                   <span className="hidden sm:inline">Preview</span>
@@ -74,6 +81,15 @@ export const PortfolioNav = forwardRef<HTMLElement, PortfolioNavProps>(
                 </>
               )}
             </button>
+
+            {/* Publish Button */}
+            {ai && (
+              <PublishButton
+                personalInfo={personal}
+                professional={professional}
+                aiPortfolio={ai}
+              />
+            )}
           </div>
         </div>
 

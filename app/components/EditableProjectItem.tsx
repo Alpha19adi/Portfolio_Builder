@@ -5,7 +5,7 @@ import { useEditMode } from "./EditModeContext";
 import { EditableText } from "./EditableText";
 import { Plus, X, Check } from "lucide-react";
 
-// Define and export the interface
+
 export interface ProjectItem {
   name: string;
   tech: string[];
@@ -110,7 +110,6 @@ export function EditableProjectItem(props: EditableProjectItemProps) {
               )}
             </span>
           ))}
-
           {isEditMode &&
             (isAddingTech ? (
               <div className="flex items-center gap-1">
@@ -164,23 +163,6 @@ export function EditableProjectItem(props: EditableProjectItemProps) {
             placeholder="Project description..."
             multiline
           />
-        </div>
-
-        <div className="mt-8 flex items-center gap-2 text-purple-400 font-medium opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
-          <span>View Details</span>
-          <svg
-            className="w-5 h-5 group-hover:translate-x-1 transition-transform"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M17 8l4 4m0 0l-4 4m4-4H3"
-            />
-          </svg>
         </div>
       </div>
     </div>
