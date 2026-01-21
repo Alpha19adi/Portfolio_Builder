@@ -7,14 +7,10 @@ interface PortfolioFooterProps {
 export function PortfolioFooter({ name }: PortfolioFooterProps) {
   return (
     <footer className="py-8 px-6 border-t border-gray-800/50">
-      <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-gray-500 text-sm">
+      <div className=" mx-auto flex flex-col sm:flex-row items-center justify-center gap-4 text-gray-500 text-sm">
         <p>
           © {new Date().getFullYear()} {name || "Portfolio"}.  All rights
           reserved.
-        </p>
-        <p className="flex items-center gap-2">
-          Built with <span className="text-red-500">❤</span> using AI Portfolio
-          Builder
         </p>
       </div>
     </footer>

@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Upload, Check, Copy, ExternalLink, X, Loader2 } from 'lucide-react';
+import { ModalPortal } from './ModalPortal';
 
 interface PublishButtonProps {
   personalInfo: any;
@@ -56,7 +57,6 @@ export function PublishButton({ personalInfo, professional, aiPortfolio }: Publi
 
   return (
     <>
-      {/* Publish Button */}
       <button
         onClick={handlePublish}
         disabled={isPublishing}
@@ -74,34 +74,28 @@ export function PublishButton({ personalInfo, professional, aiPortfolio }: Publi
           </>
         )}
       </button>
-
-      {/* Error Toast */}
       {error && (
         <div className="fixed bottom-4 right-4 p-4 bg-red-500/10 border border-red-500/50 rounded-xl text-red-400 text-sm z-50">
           {error}
         </div>
       )}
 
-      {/* Success Modal */}
       {showModal && publishedUrl && (
+        <ModalPortal>
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
           <div className="relative w-full max-w-md bg-gray-900 border border-gray-800 rounded-2xl p-6 shadow-2xl">
-            {/* Close Button */}
+            
             <button
               onClick={() => setShowModal(false)}
               className="absolute top-4 right-4 p-2 text-gray-400 hover:text-white transition-colors"
             >
               <X className="w-5 h-5" />
             </button>
-
-            {/* Success Icon */}
             <div className="flex justify-center mb-6">
               <div className="w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center">
                 <Check className="w-8 h-8 text-green-500" />
               </div>
             </div>
-
-            {/* Title */}
             <h3 className="text-2xl font-bold text-center text-white mb-2">
               Published!  🎉
             </h3>
@@ -109,7 +103,6 @@ export function PublishButton({ personalInfo, professional, aiPortfolio }: Publi
               Your portfolio is now live.  Share it with the world! 
             </p>
 
-            {/* URL Box */}
             <div className="flex items-center gap-2 p-3 bg-gray-800 rounded-xl border border-gray-700 mb-4">
               <input
                 type="text"
@@ -127,7 +120,6 @@ export function PublishButton({ personalInfo, professional, aiPortfolio }: Publi
               </button>
             </div>
 
-            {/* Buttons */}
             <div className="flex gap-3">
               <button
                 onClick={handleCopy}
@@ -148,6 +140,7 @@ export function PublishButton({ personalInfo, professional, aiPortfolio }: Publi
             </div>
           </div>
         </div>
+        </ModalPortal>
       )}
     </>
   );
