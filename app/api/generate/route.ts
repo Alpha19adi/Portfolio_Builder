@@ -9,7 +9,7 @@ const client = new Groq({
 const DOMAIN_PROMPTS:  Record<string, string> = {
   software_developer: `
     DOMAIN:  Software Development / Engineering
-    - Focus on technical skills, programming languages, frameworks, and tools
+    - Focus on tec  hnical skills, programming languages, frameworks, and tools
     - Highlight code quality, system design, and problem-solving abilities
     - Use technical action verbs:  Architected, Implemented, Debugged, Refactored, Deployed, Optimized
   `,
@@ -102,13 +102,8 @@ const DOMAIN_PROMPTS:  Record<string, string> = {
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-
-    // Extract domain from the request body
     const domain = body.professional?. domain || "other";
     const domainGuidance = DOMAIN_PROMPTS[domain] || DOMAIN_PROMPTS.other;
-
-    // IMPORTANT: Remove profileImage from the data sent to AI (it's too large!)
-    // Create a clean copy without the base64 image
     const cleanedBody = {
       personalInfo: {
         name: body.personalInfo?.name || "",
@@ -117,7 +112,6 @@ export async function POST(req: Request) {
         location: body.personalInfo?.location || "",
         github: body.personalInfo?.github || "",
         linkedIn: body.personalInfo?.linkedIn || "",
-        // DO NOT include profileImage - it's base64 and very large
       },
       professional: {
         skills: body.professional?. skills || "",
@@ -136,7 +130,7 @@ export async function POST(req: Request) {
     };
 
     const prompt = `
-You are an expert portfolio content generator. 
+You are an expert Website portfolio content generator. 
 
 Convert the user input into a professional JSON object for a portfolio website. 
 
@@ -211,12 +205,10 @@ ${JSON.stringify(cleanedBody, null, 2)}
 
     return NextResponse.json({
       success: true,
-      aiPortfolio: json, // Changed from aiResume to aiPortfolio
+      aiPortfolio: json,
     });
   } catch (err:  any) {
     console.error("AI Parsing Error:", err);
-
-    // Provide more specific error messages
     let errorMessage = "AI generation failed";
     if (err?. message?.includes("context_length_exceeded")) {
       errorMessage = "Input too long.  Please reduce the amount of text.";
