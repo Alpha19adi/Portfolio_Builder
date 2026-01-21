@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "groq-sdk": "^0.37.0",
     "gsap": "^3.14.1",
     "lucide-react": "^0.562.0",
     "mongodb": "^7.0.0",
@@ -19,7 +20,7 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
+    "@types/node": "^20.19.30",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "tailwindcss": "^4",

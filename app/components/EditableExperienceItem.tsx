@@ -5,7 +5,6 @@ import { useEditMode } from "./EditModeContext";
 import { EditableText } from "./EditableText";
 import { Pencil, Plus, X, Check } from "lucide-react";
 
-// Define and export the interface
 export interface ExperienceItem {
   company: string;
   role: string;
@@ -105,7 +104,7 @@ export function EditableExperienceItem(props: EditableExperienceItemProps) {
 
   return (
     <div className="group p-8 bg-gray-900/50 border border-gray-800 rounded-2xl hover:border-purple-500/30 transition-all duration-300 hover: shadow-xl hover:shadow-purple-500/5 relative">
-      {/* Delete Experience Button */}
+      
       {isEditMode && (
         <button
           onClick={onDelete}
@@ -142,7 +141,6 @@ export function EditableExperienceItem(props: EditableExperienceItemProps) {
         />
       </div>
 
-      {/* Experience Points/Achievements */}
       {(experience.points. length > 0 || isEditMode) && (
         <ul className="space-y-3 mt-6">
           {experience.points.map((pt, idx) => (
@@ -150,10 +148,9 @@ export function EditableExperienceItem(props: EditableExperienceItemProps) {
               key={idx}
               className="flex items-start gap-3 text-gray-400 group/point"
             >
-              {/* Bullet Point */}
+
               <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-linear-to-r from-purple-400 to-cyan-400 shrink-0"></span>
 
-              {/* Editing Mode for Point */}
               {editingPointIndex === idx ?  (
                 <div className="flex-1 flex items-center gap-2">
                   <input
@@ -183,10 +180,9 @@ export function EditableExperienceItem(props: EditableExperienceItemProps) {
                 </div>
               ) : (
                 <>
-                  {/* Display Point Text */}
                   <span className="leading-relaxed flex-1">{pt}</span>
 
-                  {/* Edit/Delete Buttons for Point */}
+                    
                   {isEditMode && (
                     <div className="flex gap-1 opacity-0 group-hover/point:opacity-100 transition-opacity">
                       <button
@@ -212,7 +208,6 @@ export function EditableExperienceItem(props: EditableExperienceItemProps) {
         </ul>
       )}
 
-      {/* Add New Point Button */}
       {isEditMode && (
         <div className="mt-4">
           {isAddingPoint ? (

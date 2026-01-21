@@ -46,9 +46,7 @@ export const ContactSection = forwardRef<HTMLDivElement, ContactSectionProps>(
             or potential collaborations. Let&apos;s connect! 
           </p>
 
-          {/* Contact Cards */}
           <div className="grid sm:grid-cols-3 gap-6 mt-12">
-            {/* Email Card */}
             {(personal.email || isEditMode) && (
               <div
                 data-contact-item
@@ -82,7 +80,6 @@ export const ContactSection = forwardRef<HTMLDivElement, ContactSectionProps>(
               </div>
             )}
 
-            {/* LinkedIn Card */}
             {(personal.linkedIn || isEditMode) && (
               <div
                 data-contact-item
@@ -110,7 +107,6 @@ export const ContactSection = forwardRef<HTMLDivElement, ContactSectionProps>(
               </div>
             )}
 
-            {/* GitHub/Website Card */}
             {(personal.github || isEditMode) && (
               <div
                 data-contact-item
@@ -139,7 +135,6 @@ export const ContactSection = forwardRef<HTMLDivElement, ContactSectionProps>(
             )}
           </div>
 
-          {/* Phone and Location */}
           <div className="flex flex-wrap justify-center gap-8 mt-10 text-gray-500">
             {(personal.phone || isEditMode) && (
               <div data-contact-item className="flex items-center gap-2">

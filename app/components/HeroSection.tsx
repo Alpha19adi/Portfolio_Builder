@@ -99,7 +99,6 @@ export const HeroSection = forwardRef<HTMLDivElement, HeroSectionProps>(
                 />
               </div>
 
-              {/* Social Links */}
               <div className="flex flex-wrap gap-4 mt-8 justify-center lg:justify-start">
                 {personal.email && (
                   <a
@@ -172,7 +171,6 @@ export const HeroSection = forwardRef<HTMLDivElement, HeroSectionProps>(
                 )}
               </div>
 
-              {/* Location */}
               {personal.location && (
                 <div className="flex items-center gap-2 mt-6 justify-center lg:justify-start text-gray-500">
                   <svg
@@ -203,18 +201,12 @@ export const HeroSection = forwardRef<HTMLDivElement, HeroSectionProps>(
               )}
             </div>
 
-            {/* Right Content - Profile Image */}
             <div ref={heroImageRef} className="order-1 lg:order-2 flex justify-center">
               <div className="relative">
-                {/* Decorative rings */}
                 <div className="absolute inset-0 -m-4 rounded-full border border-purple-500/20 animate-pulse"></div>
                 <div className="absolute inset-0 -m-8 rounded-full border border-cyan-500/10"></div>
                 <div className="absolute inset-0 -m-12 rounded-full border border-purple-500/5"></div>
-
-                {/* Glow effect */}
                 <div className="absolute inset-0 bg-linear-to-br from-purple-600/30 to-cyan-600/30 rounded-full blur-2xl"></div>
-
-                {/* Image container */}
                 <div className="relative w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden border-4 border-gray-800 shadow-2xl shadow-purple-500/20">
                   {personal.profileImage ?  (
                     <img
@@ -231,7 +223,6 @@ export const HeroSection = forwardRef<HTMLDivElement, HeroSectionProps>(
                   )}
                 </div>
 
-                {/* Floating badges */}
                 <div className="absolute -right-4 top-1/4 px-4 py-2 bg-gray-900 border border-gray-700 rounded-xl shadow-lg floating-badge">
                   <span className="text-2xl">{getDomainIcon(professional. domain)}</span>
                 </div>

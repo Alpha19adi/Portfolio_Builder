@@ -25,7 +25,6 @@ export function EditableProjectItem(props: EditableProjectItemProps) {
   const [isAddingTech, setIsAddingTech] = useState(false);
   const [newTech, setNewTech] = useState("");
 
-  // All update handlers create a complete ProjectItem
   const handleUpdateName = (value: string) => {
     const updated: ProjectItem = {
       name: value,

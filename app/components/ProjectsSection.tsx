@@ -65,8 +65,6 @@ export const ProjectsSection = forwardRef<HTMLDivElement, ProjectsSectionProps>(
               </div>
             ))}
           </div>
-
-          {/* Add Project Button */}
           {isEditMode && (
             <div className="flex justify-center mt-12">
               <button

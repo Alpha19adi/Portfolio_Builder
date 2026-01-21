@@ -13,8 +13,6 @@ interface PortfolioNavProps {
 export const PortfolioNav = forwardRef<HTMLElement, PortfolioNavProps>(
   ({ name }, ref) => {
     const { isEditMode, toggleEditMode } = useEditMode();
-    
-    // Get data from store for publishing
     const personal = useResumeStore((s) => s.personalInfo);
     const professional = useResumeStore((s) => s.professional);
     const ai = useResumeStore((s) => s.aiPortfolio);
@@ -59,8 +57,6 @@ export const PortfolioNav = forwardRef<HTMLElement, PortfolioNavProps>(
             >
               Work
             </a>
-
-            {/* Edit Mode Toggle Button */}
             <button
               onClick={toggleEditMode}
               className={`flex items-center gap-2 text-sm px-4 py-2 rounded-full transition-all duration-300 ${
@@ -82,7 +78,6 @@ export const PortfolioNav = forwardRef<HTMLElement, PortfolioNavProps>(
               )}
             </button>
 
-            {/* Publish Button */}
             {ai && (
               <PublishButton
                 personalInfo={personal}
@@ -92,8 +87,6 @@ export const PortfolioNav = forwardRef<HTMLElement, PortfolioNavProps>(
             )}
           </div>
         </div>
-
-        {/* Edit Mode Indicator Bar */}
         {isEditMode && (
           <div className="bg-linear-to-r from-purple-600/20 via-cyan-600/20 to-purple-600/20 px-6 py-2 text-center text-sm text-purple-300 border-t border-purple-500/20">
             <span className="inline-flex items-center gap-2">
